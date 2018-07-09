@@ -10,7 +10,7 @@ uuid.generateUUID = function(){
 };
 
 uuid.base32 = function(key){
-    return t2.encode(key).toString();
+    return t2.encode(key).toString().replace(new RegExp("=","g"),"");
 }
 
 module.exports.uuid = uuid;
