@@ -1,3 +1,4 @@
+# 启动
 ## 1. 安装NodeJS
 ### 1.1 下载NVM
 `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
@@ -30,3 +31,35 @@
 
 ### 7. 停止
 `bin/stop.sh`
+
+# 使用
+## 1. API
+### 1.1 生成Key并绑定
+`http://localhost:3000/api/generateKey?account={自定义用户名}`
+
+```
+{
+    "secret_key": "E39C8F89AC3A4BEEA212F01B7301507E",
+    "base32": "IUZTSQZYIY4DSQKDGNATIQSFIVATEMJSIYYDCQRXGMYDCNJQG5CQ====",
+    "qrcodeUrl": "http://qrcode.kaywa.com/img.php?s=8&d=otpauth%3A%2F%2Ftotp%2FtestUser%3Fsecret%3DIUZTSQZYIY4DSQKDGNATIQSFIVATEMJSIYYDCQRXGMYDCNJQG5CQ%3D%3D%3D%3D",
+    "qrcodeStr": "otpauth%3A%2F%2Ftotp%2FtestUser%3Fsecret%3DIUZTSQZYIY4DSQKDGNATIQSFIVATEMJSIYYDCQRXGMYDCNJQG5CQ%3D%3D%3D%3D"
+}
+```
+
+其中secret_key为共享密钥，base32是secret_key的base32形式，qrcodeUrl提供直接生成的二维码，qrcodeStr为二维码实际内容
+
+### 1.2 验证Code
+`http://localhost:3000/api/verify?key=E39C8F89AC3A4BEEA212F01B7301507E&code=522176`
+
+```
+{
+    "result": false,
+    "code": "522176",
+    "key": "E39C8F89AC3A4BEEA212F01B7301507E"
+}
+```
+
+key就是1.1中的secret_key，code就是二次验证生成的code，result表示验证成功或者失败
+
+## 2. 客户端程序
+所有支持google-authenticator的客户端都可以
