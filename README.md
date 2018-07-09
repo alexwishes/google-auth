@@ -63,5 +63,7 @@ key就是1.1中的secret_key，code就是二次验证生成的code，result表�
 
 ## 2. 客户端程序
 所有支持google-authenticator的客户端都可以
+
 Android：https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1
+
 IOS：https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8
